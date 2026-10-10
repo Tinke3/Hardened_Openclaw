@@ -138,7 +138,7 @@ rm ~/.config/systemd/user/openclaw-gateway.service.d/umask.conf && systemctl --u
 ## Security notes
 
 - The prompt is not a control. It reduces how often the model attempts something that the gateway would refuse anyway.
-- The agent still has message tools. The sender allowlist limits who can write to the agent, not whom the agent can write to. TODO: not verified whether outbound messages can be limited to the owner.
+- The agent still has message tools. The sender allowlist limits who can write to the agent, not whom the agent can write to. Outbound messages are limited to the current conversation in [phase 7](07-home-assistant-mcp.md).
 - The `session-memory` setting was written by onboarding although no hook question was shown. Review `openclaw config get hooks` after onboarding.
 
 ## References

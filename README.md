@@ -15,8 +15,9 @@ Covered so far:
 - A Telegram channel restricted to a single owner
 - A short, hand-written agent prompt, with bundled hooks and skills switched off
 - Per-user egress filtering for the agent account
+- Home Assistant over MCP: a few lights and sensors, through a non-admin user and a tool filter
 
-Not covered yet: Home Assistant integration, sandboxing, secret references, a destination allowlist for egress, backups and updates.
+Not covered yet: sandboxing, secret references, TLS towards Home Assistant, a destination allowlist for egress, backups and updates.
 
 ## Tested environment
 
@@ -29,12 +30,13 @@ Not covered yet: Home Assistant integration, sandboxing, secret references, a de
 | OpenClaw | 2026.9.9 (bcfc888) |
 | Node.js | 24.21.0, installed by `install-cli.sh` |
 | Model provider | Anthropic API |
-| Network | Wi-Fi for phases 1 to 5, Ethernet for phase 6. IPv4 by DHCP, IPv6 link-local only. |
+| Home Assistant | Home Assistant OS, Core 2026.10.0, on another host |
+| Network | Wi-Fi for phases 1 to 5, Ethernet from phase 6. IPv4 by DHCP, IPv6 link-local only. |
 | Test date | 2026-10-10 |
 
 ## Architecture in one paragraph
 
-The Pi sits in an isolated network segment. It is administered over SSH from a separate management subnet. The OpenClaw Gateway runs as a systemd user service under an unprivileged account, listens on loopback only, and reaches the model provider and Telegram with outbound connections. No inbound port other than SSH is open, and the agent account can open outbound connections only for DNS and HTTPS to public addresses. See [docs/00-threat-model.md](docs/00-threat-model.md).
+The Pi sits in an isolated network segment. It is administered over SSH from a separate management subnet. The OpenClaw Gateway runs as a systemd user service under an unprivileged account, listens on loopback only, and reaches the model provider and Telegram with outbound connections. No inbound port other than SSH is open, and the agent account can open outbound connections only for DNS, HTTPS to public addresses and one port on the Home Assistant host. See [docs/00-threat-model.md](docs/00-threat-model.md).
 
 ## Phases
 
@@ -44,6 +46,7 @@ The Pi sits in an isolated network segment. It is administered over SSH from a s
 4. [Telegram channel](docs/04-telegram-channel.md)
 5. [Agent prompt, hooks and skills](docs/05-agent-prompt-hooks-skills.md)
 6. [Egress filtering for the agent user](docs/06-egress-filtering.md)
+7. [Home Assistant over MCP](docs/07-home-assistant-mcp.md)
 
 Problems met along the way are in [docs/troubleshooting.md](docs/troubleshooting.md).
 
@@ -58,6 +61,7 @@ Problems met along the way are in [docs/troubleshooting.md](docs/troubleshooting
 | `<AGENT_ID>` | Agent id chosen during onboarding |
 | `<TELEGRAM_USER_ID>` | Your numeric Telegram user id |
 | `<TELEGRAM_BOT_TOKEN>` | Token issued by BotFather. Never commit it. |
+| `<PI_IP>`, `<HA_IP>` | Addresses of the Pi and of Home Assistant. The example ruleset uses `198.51.100.10` for Home Assistant. |
 | `<DNS_RESOLVER>` | Address of the DNS resolver in `/etc/resolv.conf`. The example ruleset uses `192.0.2.53`. |
 | `<AGENT_NAME>`, `<OWNER_NAME>`, `<LANGUAGE>`, `<TIMEZONE>` | Values in the example workspace files |
 

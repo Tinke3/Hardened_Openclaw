@@ -1,5 +1,5 @@
 // Resulting agent policy on OpenClaw 2026.9.9.
-// In the guide these settings were applied in several steps (see docs/03, docs/04 and docs/05).
+// In the guide these settings were applied in several steps (see docs/03, docs/04, docs/05 and docs/07).
 // This combined file was not applied as a single patch.
 {
   tools: {
@@ -24,6 +24,23 @@
     agentToAgent: { enabled: false },
     codeMode: false,
     toolSearch: false,
+    message: {
+      crossContext: { allowWithinProvider: false, allowAcrossProviders: false },
+      broadcast: { enabled: false },
+    },
+  },
+  mcp: {
+    servers: {
+      homeassistant: {
+        url: "http://<HA_IP>:8123/api/mcp/assist",
+        transport: "streamable-http",
+        headers: { Authorization: "Bearer <HA_TOKEN>" },
+        // Written by `openclaw mcp tools homeassistant --include ...`
+        toolFilter: {
+          include: ["*GetLiveContext", "*GetDateTime", "*HassTurnOn", "*HassTurnOff", "*HassLightSet"],
+        },
+      },
+    },
   },
   browser: { enabled: false },
   hooks: {
