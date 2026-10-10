@@ -1,5 +1,5 @@
 // Resulting agent policy on OpenClaw 2026.9.9.
-// In the guide these settings were applied in several steps (see docs/03 and docs/04).
+// In the guide these settings were applied in several steps (see docs/03, docs/04 and docs/05).
 // This combined file was not applied as a single patch.
 {
   tools: {
@@ -26,9 +26,21 @@
     toolSearch: false,
   },
   browser: { enabled: false },
+  hooks: {
+    internal: {
+      entries: {
+        "session-memory": { enabled: false },
+        "boot-md": { enabled: false },
+        "bootstrap-extra-files": { enabled: false },
+      },
+    },
+  },
   agents: {
     defaults: {
       heartbeat: { every: "0m" },
+    },
+    entries: {
+      "<AGENT_ID>": { skills: [] },
     },
   },
   channels: {

@@ -129,7 +129,7 @@ echo $SSH_CONNECTION
 sudo cp -a /etc/nftables.conf /etc/nftables.conf.orig
 ```
 
-Write the ruleset from [../examples/nftables.conf](../examples/nftables.conf) to `/etc/nftables.conf`, replacing the example subnet with `<MGMT_SUBNET>`. Then check and load it with an automatic rollback:
+Write the ruleset from [../examples/nftables.conf](../examples/nftables.conf) to `/etc/nftables.conf`, replacing the example subnet with `<MGMT_SUBNET>`. The example file also contains the `agent_out` chain added in [phase 6](06-egress-filtering.md). At this point, leave out that chain and the `jump` rule in `output`. Then check and load it with an automatic rollback:
 
 ```bash
 sudo nft -c -f /etc/nftables.conf && echo "syntax ok"
