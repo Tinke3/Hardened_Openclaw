@@ -1,0 +1,18 @@
+# Private session log, never published
+openclaw-tilanne.md
+loki/
+
+# Secrets and local configuration
+*.token
+*.key
+*.pem
+.env
+.env.*
+openclaw.json
+openclaw.json.bak*
+*.sqlite
+*.sqlite-*
+
+# Editor and OS files
+.DS_Store
+*.swp

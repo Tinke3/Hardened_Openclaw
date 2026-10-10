@@ -1,0 +1,43 @@
+// Resulting agent policy on OpenClaw 2026.9.9.
+// In the guide these settings were applied in several steps (see docs/03 and docs/04).
+// This combined file was not applied as a single patch.
+{
+  tools: {
+    profile: "messaging",
+    deny: [
+      "group:runtime",
+      "group:fs",
+      "group:web",
+      "group:ui",
+      "group:nodes",
+      "group:automation",
+      "sessions_spawn",
+      "sessions_send",
+      "intent",
+      "presence",
+      "subagents",
+    ],
+    fs: { workspaceOnly: true },
+    exec: { security: "deny", ask: "always" },
+    elevated: { enabled: false },
+    sessions: { visibility: "agent" },
+    agentToAgent: { enabled: false },
+    codeMode: false,
+    toolSearch: false,
+  },
+  browser: { enabled: false },
+  agents: {
+    defaults: {
+      heartbeat: { every: "0m" },
+    },
+  },
+  channels: {
+    telegram: {
+      enabled: true,
+      tokenFile: "/home/openclaw/.openclaw/telegram.token",
+      dmPolicy: "allowlist",
+      groupPolicy: "disabled",
+      allowFrom: ["<TELEGRAM_USER_ID>"],
+    },
+  },
+}
