@@ -145,7 +145,7 @@ In a fresh session (`/new`), with your own device names:
 
 All three behaved as expected on the tested environment.
 
-TODO: not verified that Home Assistant's Logbook attributes the changes to the agent's user.
+**Audit trail.** Open a light's details in Home Assistant while logged in as an administrator and look at its Activity section. The changes made by the agent are attributed to the agent's user. The History view does not show who made a change, and the agent's own non-admin user does not see the attribution.
 
 ## Rollback
 

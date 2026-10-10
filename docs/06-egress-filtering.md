@@ -90,7 +90,7 @@ sudo cp -a /etc/nftables.conf.bak /etc/nftables.conf && sudo nft -f /etc/nftable
 
 - This does not stop data leaving over HTTPS to an arbitrary host, or through DNS queries. A destination allowlist would.
 - If the resolver address changes, the agent stops working until the rule is updated.
-- The agent account cannot use git over SSH or plain HTTP. TODO: not verified that `openclaw update` works under these rules.
+- The agent account cannot use git over SSH or plain HTTP. The update check works under these rules: `openclaw update` reached the registry and reported `already-current`. TODO: not verified that an update that installs a new version works.
 - IPv6 is rejected for the agent account. The tested host had link-local addresses only.
 
 ## References

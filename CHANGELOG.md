@@ -11,4 +11,5 @@
 - Added phase 5 (agent prompt, hooks and skills) with example workspace files, and phase 6 (egress filtering for the agent user).
 - Extended the example nftables ruleset with the agent egress chain.
 - Added phase 7 (Home Assistant over MCP): outbound message guard, non-admin user, one firewall path, tool filter.
+- Confirmed the Home Assistant audit trail and the update check under the egress rules.
 - Tested with OpenClaw 2026.9.9 on Raspberry Pi OS Lite (Debian 13.7) and Home Assistant Core 2026.10.0.
