@@ -163,6 +163,9 @@ From another machine, `ssh -o PubkeyAuthentication=no <ADMIN_USER>@<PI_HOST>` mu
 
 ## Rollback
 
+> [!NOTE]
+> Not tested. These commands were not run on the tested environment.
+
 ```bash
 sudo rm /etc/ssh/sshd_config.d/00-hardening.conf && sudo systemctl reload ssh
 sudo rm /etc/apt/apt.conf.d/52unattended-upgrades-local
@@ -180,4 +183,4 @@ sudo systemctl enable --now avahi-daemon.socket avahi-daemon.service
 ## References
 
 - [OpenClaw: Raspberry Pi](https://docs.openclaw.ai/install/raspberry-pi)
-- [Raspberry Pi documentation: updating](https://www.raspberrypi.com/documentation/computers/os.html)
+- [Raspberry Pi documentation: Update your current Raspberry Pi software](https://www.raspberrypi.com/documentation/computers/os.html#update-software)

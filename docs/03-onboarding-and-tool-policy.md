@@ -150,6 +150,9 @@ Use a fresh session for this. In an existing session the model repeated tools fr
 
 ## Rollback
 
+> [!NOTE]
+> Not tested. These commands were not run on the tested environment.
+
 OpenClaw keeps backups next to the configuration file (`openclaw.json.bak`). Individual settings can be removed with `openclaw config unset <path>`.
 
 ## Security notes

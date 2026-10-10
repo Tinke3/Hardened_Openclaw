@@ -119,6 +119,9 @@ Then run the behavioural check described in [03-onboarding-and-tool-policy.md](0
 
 ## Rollback
 
+> [!NOTE]
+> Not tested. These commands were not run on the tested environment.
+
 ```bash
 openclaw config set channels.telegram.enabled false --strict-json
 ```

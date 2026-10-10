@@ -126,6 +126,9 @@ Expected: `0077`, a path under `~/.openclaw/bin`, `OpenClaw 2026.9.9`, and `runn
 
 ## Rollback
 
+> [!NOTE]
+> Not tested. These commands were not run on the tested environment.
+
 ```bash
 sudo loginctl disable-linger openclaw
 sudo deluser --remove-home openclaw
