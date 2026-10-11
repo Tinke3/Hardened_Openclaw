@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-11
+
+- Added phase 8 (encrypted backups): `openclaw backup`, `age` with an off-host private key, restore checks.
+
 ## 2026-10-10
 
 - Initial version.

@@ -16,8 +16,9 @@ Covered so far:
 - A short, hand-written agent prompt, with bundled hooks and skills switched off
 - Per-user egress filtering for the agent account
 - Home Assistant over MCP: a few lights and sensors, through a non-admin user and a tool filter
+- Encrypted backups that the Pi can create and cannot open
 
-Not covered yet: sandboxing, secret references, TLS towards Home Assistant, a destination allowlist for egress, backups and updates.
+Not covered yet: sandboxing, secret references, TLS towards Home Assistant, a destination allowlist for egress, scheduled backups and an update routine.
 
 ## Tested environment
 
@@ -32,7 +33,7 @@ Not covered yet: sandboxing, secret references, TLS towards Home Assistant, a de
 | Model provider | Anthropic API |
 | Home Assistant | Home Assistant OS, Core 2026.10.0, on another host |
 | Network | Wi-Fi for phases 1 to 5, Ethernet from phase 6. IPv4 by DHCP, IPv6 link-local only. |
-| Test date | 2026-10-10 |
+| Test dates | 2026-10-10 and 2026-10-11 |
 
 ## Architecture in one paragraph
 
@@ -47,6 +48,7 @@ The Pi sits in an isolated network segment. It is administered over SSH from a s
 5. [Agent prompt, hooks and skills](docs/05-agent-prompt-hooks-skills.md)
 6. [Egress filtering for the agent user](docs/06-egress-filtering.md)
 7. [Home Assistant over MCP](docs/07-home-assistant-mcp.md)
+8. [Encrypted backups](docs/08-backups.md)
 
 Problems met along the way are in [docs/troubleshooting.md](docs/troubleshooting.md).
 
@@ -62,6 +64,7 @@ Problems met along the way are in [docs/troubleshooting.md](docs/troubleshooting
 | `<TELEGRAM_USER_ID>` | Your numeric Telegram user id |
 | `<TELEGRAM_BOT_TOKEN>` | Token issued by BotFather. Never commit it. |
 | `<PI_IP>`, `<HA_IP>` | Addresses of the Pi and of Home Assistant. The example ruleset uses `198.51.100.10` for Home Assistant. |
+| `<AGE_PUBLIC_KEY>`, `<KEY_FILE>`, `<SYNCED_FOLDER>` | The backup key pair and the cloud-synced folder that holds encrypted backups |
 | `<DNS_RESOLVER>` | Address of the DNS resolver in `/etc/resolv.conf`. The example ruleset uses `192.0.2.53`. |
 | `<AGENT_NAME>`, `<OWNER_NAME>`, `<LANGUAGE>`, `<TIMEZONE>` | Values in the example workspace files |
 
